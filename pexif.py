@@ -513,6 +513,8 @@ class IfdData(object):
                 actual_data = the_data
             elif exif_type == SHORT:
                 actual_data = pack(e + ("H" * components), *the_data)
+            elif exif_type == SIGNEDSHORT:
+                actual_data = pack(e + ("H" * components), *the_data)
             elif exif_type == LONG:
                 actual_data = pack(e + ("I" * components), *the_data)
             elif exif_type == SLONG:
