@@ -116,7 +116,6 @@ DEBUG = 0
 # be raised.
 unknown_maker_note_as_error = False
 
-
 def debug(*debug_string):
     """Used for print style debugging. Enable by setting the global
     DEBUG to 1."""
@@ -241,6 +240,7 @@ SHORT = ExifType(3, "short", 2).id
 LONG = ExifType(4, "long", 4).id
 RATIONAL = ExifType(5, "rational", 8).id
 UNDEFINED = ExifType(7, "undefined", 1).id
+SIGNEDSHORT = ExifType(8, "signedshort", 2).id
 SLONG = ExifType(9, "slong", 4).id
 SRATIONAL = ExifType(10, "srational", 8).id
 
@@ -440,6 +440,8 @@ class IfdData(object):
                         # the_data, map(ord, the_data))
                     actual_data = the_data
                 elif exif_type == SHORT:
+                    actual_data = list(unpack(e + ("H" * components), the_data))
+                elif exif_type == SIGNEDSHORT:
                     actual_data = list(unpack(e + ("H" * components), the_data))
                 elif exif_type == LONG:
                     actual_data = list(unpack(e + ("I" * components), the_data))
