@@ -115,6 +115,8 @@ DEBUG = 0
 # Set to `unknown_make_note_as_error` to True, if errors should
 # be raised.
 unknown_maker_note_as_error = False
+
+
 def debug(*debug_string):
     """Used for print style debugging. Enable by setting the global
     DEBUG to 1."""
